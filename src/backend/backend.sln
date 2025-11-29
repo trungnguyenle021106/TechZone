@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36705.20
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-	ProjectSection(SolutionItems) = preProject
-		Docker\docker-compose.yml = Docker\docker-compose.yml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{0EB77EC9-CBB9-4304-826B-780C7BBB610C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B6FE0D53-9B6F-4493-84F8-199772233488}"
@@ -55,6 +50,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{2B2E3036-FAEA-4E5E-8136-08A2FA62A034}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotGateway", "Gateways\OcelotGateway\OcelotGateway.csproj", "{6119614B-E828-4F4C-A9B8-D9D1E4BD5F98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Core", "BuildingBlocks\BuildingBlocks.Core\BuildingBlocks.Core.csproj", "{75A6B210-0018-4985-90D6-3E9CF4C314E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +127,10 @@ Global
 		{6119614B-E828-4F4C-A9B8-D9D1E4BD5F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6119614B-E828-4F4C-A9B8-D9D1E4BD5F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6119614B-E828-4F4C-A9B8-D9D1E4BD5F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A6B210-0018-4985-90D6-3E9CF4C314E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A6B210-0018-4985-90D6-3E9CF4C314E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A6B210-0018-4985-90D6-3E9CF4C314E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A6B210-0018-4985-90D6-3E9CF4C314E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,6 +157,7 @@ Global
 		{8CC14328-142A-4CED-8E1F-F89E207CA87D} = {4C5BE7E2-CD45-49DB-A3BC-7DBEBC8333B7}
 		{2B2E3036-FAEA-4E5E-8136-08A2FA62A034} = {4C5BE7E2-CD45-49DB-A3BC-7DBEBC8333B7}
 		{6119614B-E828-4F4C-A9B8-D9D1E4BD5F98} = {C302C305-3723-4B50-A56A-EE7BB4119DC2}
+		{75A6B210-0018-4985-90D6-3E9CF4C314E0} = {0EB77EC9-CBB9-4304-826B-780C7BBB610C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {32E4FE0D-4929-45DB-98C6-398B1975298B}
