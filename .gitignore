@@ -416,3 +416,40 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# --- ANGULAR / FRONTEND ---
+# (node_modules đã có ở trên nên không cần khai báo lại)
+
+# Angular build output
+/dist
+/dist/
+/out-tsc/
+
+# Angular configuration
+.angular/
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# --- DOCKER ---
+# Ignore các thư mục dữ liệu nếu bạn mount volume ra ngoài (bind mount)
+# Ví dụ: nếu bạn sửa docker-compose để lưu data ngay tại thư mục code
+mssql_data/
+redis_data/
+seq_data/
+rabbitmq_data/
+
+# --- IDE SPECIFIC ---
+# .vscode đã được xử lý tốt ở template trên, không cần override lại
+.idea/
+*.sublime-workspace
+
+# --- OS FILES ---
+.DS_Store
+Thumbs.db
+Desktop.ini
