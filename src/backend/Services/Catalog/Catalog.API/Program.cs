@@ -1,7 +1,9 @@
-﻿using Catalog.Infrastructure.Data;
+﻿using Carter; 
+using Catalog.Application.Data;
+using Catalog.Infrastructure.Data;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using Carter; // <--- Thêm namespace này
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +24,17 @@ builder.Services.AddMediatR(config =>
     // hoặc trỏ vào 1 class bất kỳ trong Application layer.
 });
 
+// Đăng ký tất cả Validators nằm trong Assembly của Catalog.Application
+builder.Services.AddValidatorsFromAssembly(typeof(Catalog.Application.AssemblyReference).Assembly);
+
+// 1. Đăng ký DbContext như bình thường (để có Connection String)
 builder.Services.AddDbContext<CatalogDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
+
+// 2. Đăng ký Interface mapping (QUAN TRỌNG)
+// Ý nghĩa: Khi Inject IApplicationDbContext, hãy lấy instance của CatalogDbContext
+builder.Services.AddScoped<IApplicationDbContext>(provider =>
+    provider.GetRequiredService<CatalogDbContext>());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
