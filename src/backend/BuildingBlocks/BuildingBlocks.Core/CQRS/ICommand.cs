@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// ICommand.cs - Dùng cho các hành động GHI (Create, Update, Delete)
+using MediatR;
 
 namespace BuildingBlocks.Core.CQRS
 {
-    internal interface ICommand
+    // ICommand trả về Unit (void)
+    public interface ICommand : ICommand<Unit>
+    {
+    }
+
+    // ICommand trả về TResponse
+    public interface ICommand<out TResponse> : IRequest<TResponse>
     {
     }
 }
