@@ -15,7 +15,7 @@
     },
     // 2. Basket Service Route
     {
-      "DownstreamPathTemplate": "/basket/{everything}",
+      "DownstreamPathTemplate": "/basket", // Đã bỏ {everything}
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -23,12 +23,10 @@
           "Port": 5010
         }
       ],
-      "UpstreamPathTemplate": "/basket-service/basket/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "DELETE" ],
-
-      // THÊM ĐOẠN NÀY:
+      "UpstreamPathTemplate": "/basket-service/basket", // Đã bỏ {everything}
+      "UpstreamHttpMethod": [ "GET", "POST" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer", // Khớp với tên đã đăng ký trong Program.cs
+        "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       }
     }
