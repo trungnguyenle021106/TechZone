@@ -4,7 +4,7 @@ using BuildingBlocks.Messaging.Events;
 using Carter;
 using Mapster;
 using MassTransit;
-using Microsoft.AspNetCore.Mvc;
+
 
 namespace Basket.API.Endpoints
 {
