@@ -1,0 +1,34 @@
+﻿{
+  "Routes": [
+    // 1. Catalog Service Route
+    {
+      "DownstreamPathTemplate": "/products/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/catalog-service/products/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+    // 2. Basket Service Route
+    {
+      "DownstreamPathTemplate": "/basket/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5010
+        }
+      ],
+      "UpstreamPathTemplate": "/basket-service/basket/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE" ]
+    }
+    // Ordering Service hiện tại chưa có Public API (chỉ nhận message ngầm), nên chưa cần route.
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:6000"
+  }
+}
