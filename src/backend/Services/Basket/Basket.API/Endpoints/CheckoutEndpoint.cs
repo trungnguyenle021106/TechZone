@@ -4,6 +4,7 @@ using BuildingBlocks.Messaging.Events;
 using Carter;
 using Mapster;
 using MassTransit;
+using System.Security.Claims;
 
 
 namespace Basket.API.Endpoints
@@ -14,8 +15,16 @@ namespace Basket.API.Endpoints
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/basket/checkout", async (CheckoutRequest request, IBasketRepository repository, IPublishEndpoint publishEndpoint) =>
+            app.MapPost("/basket/checkout", async (CheckoutRequest request, IBasketRepository repository, IPublishEndpoint publishEndpoint
+                , ClaimsPrincipal user) =>
             {
+                var userName = user.Identity?.Name
+                  ?? user.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                  ?? user.FindFirst("sub")?.Value
+                  ?? user.FindFirst("name")?.Value;
+                if (string.IsNullOrEmpty(userName)) return Results.Unauthorized();
+
+
                 // 1. Lấy giỏ hàng
                 var basket = await repository.GetBasket(request.UserName);
                 if (basket == null)
@@ -34,7 +43,8 @@ namespace Basket.API.Endpoints
                 return Results.Accepted(); // Trả về 202 Accepted (Đã nhận, đang xử lý ngầm)
             })
             .WithName("CheckoutBasket")
-            .WithTags("Basket");
+            .WithTags("Basket")
+            .RequireAuthorization();
         }
     }
 }
