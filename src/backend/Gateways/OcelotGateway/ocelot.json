@@ -15,7 +15,7 @@
     },
     // 2. Basket Service Route
     {
-      "DownstreamPathTemplate": "/basket", 
+      "DownstreamPathTemplate": "/basket",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -23,12 +23,25 @@
           "Port": 5010
         }
       ],
-      "UpstreamPathTemplate": "/basket-service/basket", 
+      "UpstreamPathTemplate": "/basket-service/basket",
       "UpstreamHttpMethod": [ "GET", "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       }
+    },
+    // 3. Identity Service Route
+    {
+      "DownstreamPathTemplate": "/auth/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001 // Port của Identity.API (Kiểm tra lại launchSettings.json của Identity nếu khác)
+        }
+      ],
+      "UpstreamPathTemplate": "/identity-service/auth/{everything}",
+      "UpstreamHttpMethod": [ "POST" ]
     }
     // Ordering Service hiện tại chưa có Public API (chỉ nhận message ngầm), nên chưa cần route.
   ],
