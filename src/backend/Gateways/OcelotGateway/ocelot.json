@@ -33,7 +33,7 @@
     // 3. Identity Service Route
     {
       "DownstreamPathTemplate": "/auth/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
