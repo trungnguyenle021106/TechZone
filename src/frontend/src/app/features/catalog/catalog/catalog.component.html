@@ -1,0 +1,17 @@
+<div class="container" style="padding: 30px;">
+  <div nz-row [nzGutter]="16">
+    <div nz-col [nzSpan]="6" *ngFor="let product of products">
+      <nz-card [nzCover]="coverTemplate" [nzHoverable]="true" style="margin-bottom: 20px;">
+        <nz-card-meta
+          [nzTitle]="product.name"
+          [nzDescription]="product.price + ' VND'">
+        </nz-card-meta>
+        <p>{{ product.description }}</p>
+      </nz-card>
+      
+      <ng-template #coverTemplate>
+        <img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
+      </ng-template>
+    </div>
+  </div>
+</div>
