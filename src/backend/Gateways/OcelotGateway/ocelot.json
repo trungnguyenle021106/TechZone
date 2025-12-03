@@ -2,7 +2,7 @@
   "Routes": [
     // 1. Catalog Service Route
     {
-      "DownstreamPathTemplate": "/products/{everything}",
+      "DownstreamPathTemplate": "/products",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -10,12 +10,12 @@
           "Port": 5000
         }
       ],
-      "UpstreamPathTemplate": "/catalog-service/products/{everything}",
+      "UpstreamPathTemplate": "/catalog-service/products",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     },
     // 2. Basket Service Route
     {
-      "DownstreamPathTemplate": "/basket", // Đã bỏ {everything}
+      "DownstreamPathTemplate": "/basket", 
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -23,7 +23,7 @@
           "Port": 5010
         }
       ],
-      "UpstreamPathTemplate": "/basket-service/basket", // Đã bỏ {everything}
+      "UpstreamPathTemplate": "/basket-service/basket", 
       "UpstreamHttpMethod": [ "GET", "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
