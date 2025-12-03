@@ -26,9 +26,24 @@ builder.Services.AddAuthentication()
         };
     });
 
+
+// Add CORS Service
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyHeader()
+            .AllowAnyMethod()
+            .WithOrigins("http://localhost:4200"); // Cho phép Angular gọi vào
+    });
+});
+
 builder.Services.AddOcelot(builder.Configuration);
 
 var app = builder.Build();
+
+// Use CORS Middleware (Phải đặt trước UseAuthentication và UseOcelot)
+app.UseCors("CorsPolicy");
 
 // 2. Kích hoạt Authentication Middleware (Trước UseOcelot)
 app.UseAuthentication();
